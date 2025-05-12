@@ -1,5 +1,6 @@
 import boto3
 import json
+import csv
 
 iam = boto3.client('iam')
 
@@ -8,10 +9,11 @@ escalation_actions = [
 	"iam:CreateUser",
 	"iam:PutUserPolicy",
 	"iam:AddUserToGroup",
-	"iam:PassRole"
-	"iam:create access key"
+	"iam:PassRole",
+	"iam:CreateAccessKey"
 
 ]
+
 def list_roles():
     response = iam.list_roles()
     for role in response['Roles']:
