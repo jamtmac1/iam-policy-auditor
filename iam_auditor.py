@@ -15,6 +15,9 @@ escalation_actions = [
 ]
 
 def list_roles():
+	with open("'iam_audit_results.csv", mode = "w", newline="") as csvfile:
+		writer = csvwriter(csvfile)
+		write.writerow(["RolenName","Wildcard","EscalationRisks". 
     response = iam.list_roles()
     for role in response['Roles']:
         print(f"Role: {role['RoleName']}")
