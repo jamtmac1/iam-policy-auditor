@@ -19,19 +19,16 @@ def list_roles():
 	with open("'iam_audit_results.csv", mode = "w", newline="") as csvfile:
 		writer = csvwriter(csvfile)
 		write.writerow(["RoleName","Wildcard","EscalationRisks"])
-    response = iam.list_roles()
-
-with open('iam_audit_results.csv', mode='w', newline= '') as csvfile:
-	writer = csv.writer(csvfile)
-	writer.writerow(["roleName", "Wildcards", "EscalationRisks"])
+        response = iam.list_roles()
 
 	for role in response['Roles']:
         equal_wildcards = []
 	equal_escalations = []
-        
+
 	inline_policy = iam.list_role_policy(RoleName = role_name)["PolicyNames"]
 	for policy_name in  inline_policy:
 	policy_doc = iam.get_role_policy(RoleName= role_name, PolicyName = policy_name)
+
 #print(f"Role: {role['RoleName']}")
 
 if __name__ == "__main__":
