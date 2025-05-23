@@ -10,7 +10,7 @@ escalation_actions = [
 	"iam:PutUserPolicy",
 	"iam:AddUserToGroup",
 	"iam:PassRole",
-	"iam:Createaccesskey"
+	"iam:CreateAccessKey"
 
 # Function to list and export results
 ]
@@ -18,7 +18,7 @@ escalation_actions = [
 def list_roles():
 	with open("'iam_audit_results.csv", mode = "w", newline="") as csvfile:
 		writer = csvwriter(csvfile)
-		write.writerow(["RolenName","Wildcard","EscalationRisks"])
+		write.writerow(["RoleName","Wildcard","EscalationRisks"])
     response = iam.list_roles()
 
 with open('iam_audit_results.csv', mode='w', newline= '') as csvfile:
@@ -29,6 +29,9 @@ with open('iam_audit_results.csv', mode='w', newline= '') as csvfile:
         equal_wildcards = []
 	equal_escalations = []
         
+	inline_policy = iam.list_role_policy(RoleName = role_name)["PolicyNames"]
+	for policy_name in  inline_policy:
+	policy_doc = iam.get_role_policy(RoleName= role_name, PolicyName = policy_name)
 #print(f"Role: {role['RoleName']}")
 
 if __name__ == "__main__":
