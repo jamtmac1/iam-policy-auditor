@@ -12,7 +12,6 @@ This project simulates core functionality used by security engineers, cloud audi
 - Outputs flagged actions by role
 - Easily extendable and CLI-ready
 
----
 
 ## Why This Exists
 
@@ -22,7 +21,6 @@ This tool is part of my cloud engineering development journey and focuses on:
 - Automating cloud audits with Python and boto3
 - Building real-world, security-first DevOps tooling
 
----
 
 ## How It Works
 
@@ -33,7 +31,6 @@ This tool is part of my cloud engineering development journey and focuses on:
    - Looks for dangerous actions or excessive permissions
 4. Prints issues found in a readable format
 
----
 
 ## Example Risk Checks
 
@@ -43,7 +40,7 @@ This tool is part of my cloud engineering development journey and focuses on:
 - `iam:CreateAccessKey`  
 - `iam:AttachUserPolicy`
 
----
+
 
 ## Requirements
 
@@ -51,7 +48,6 @@ This tool is part of my cloud engineering development journey and focuses on:
 - AWS credentials configured (`aws configure`)
 - boto3 (Install with `pip install boto3`)
 
----
 
 ## Usage
 
