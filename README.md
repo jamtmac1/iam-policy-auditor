@@ -2,7 +2,7 @@
 Script to audit AWS IAM roles and policies
 A Python-based command-line tool that analyzes IAM roles and policies in your AWS account to identify common security misconfigurations and privilege escalation risks.
 This project simulates core functionality used by security engineers, cloud auditors, and DevOps teams to enforce least privilege and improve AWS account security.
----
+
 ## Features
 - Lists all IAM roles in your AWS account
 - Analyzes both inline and managed policies
@@ -12,7 +12,6 @@ This project simulates core functionality used by security engineers, cloud audi
 - Outputs flagged actions by role
 - Easily extendable and CLI-ready
 
----
 
 ## Why This Exists
 
@@ -22,7 +21,6 @@ This tool is part of my cloud engineering development journey and focuses on:
 - Automating cloud audits with Python and boto3
 - Building real-world, security-first DevOps tooling
 
----
 
 ## How It Works
 
@@ -33,7 +31,6 @@ This tool is part of my cloud engineering development journey and focuses on:
    - Looks for dangerous actions or excessive permissions
 4. Prints issues found in a readable format
 
----
 
 ## Example Risk Checks
 
@@ -43,7 +40,7 @@ This tool is part of my cloud engineering development journey and focuses on:
 - `iam:CreateAccessKey`  
 - `iam:AttachUserPolicy`
 
----
+
 
 ## Requirements
 
@@ -51,7 +48,6 @@ This tool is part of my cloud engineering development journey and focuses on:
 - AWS credentials configured (`aws configure`)
 - boto3 (Install with `pip install boto3`)
 
----
 
 ## Usage
 
