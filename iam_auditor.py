@@ -27,7 +27,10 @@ def list_roles():
 
 	inline_policy = iam.list_role_policy(RoleName = role_name)["PolicyNames"]
 	for policy_name in  inline_policy:
-	policy_doc = iam.get_role_policy(RoleName= role_name, PolicyName = policy_name)
+	policy_doc = iam.get_role_policy(RoleName= role_name, PolicyName = policy_name)['PolicyDocument']
+	statments = policy_doc.get("Statement",[])
+	if isInstance(statements, dict)
+		statements = [statements]
 
 #print(f"Role: {role['RoleName']}")
 
