@@ -32,6 +32,11 @@ def list_roles():
 	if isInstance(statements, dict)
 		statements = [statements]
 
+	for statement in statements:
+		actions = statement.get("Action", [])
+		if isinstance(actions, str):
+			actions = [actions]
+
 #print(f"Role: {role['RoleName']}")
 
 if __name__ == "__main__":
