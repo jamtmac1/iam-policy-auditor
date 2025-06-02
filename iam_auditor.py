@@ -36,6 +36,11 @@ def list_roles():
 		actions = statement.get("Action", [])
 		if isinstance(actions, str):
 			actions = [actions]
+		for action in actions:
+			if "*" in action:
+			found_wildcards.append(action)
+			if action.lower() in [e.lower() for e in escalation_actions]:
+			found_escalation_risks.append(action)
 
 #print(f"Role: {role['RoleName']}")
 
