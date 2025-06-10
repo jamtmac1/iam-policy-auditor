@@ -22,8 +22,9 @@ def list_roles():
         response = iam.list_roles()
 
 	for role in response['Roles']:
-        equal_wildcards = []
-	equal_escalations = []
+        role_name = role['RoleName'] 
+	found_wildcards = []
+	found_escalations = []
 
 	inline_policy = iam.list_role_policy(RoleName = role_name)["PolicyNames"]
 	for policy_name in  inline_policy:
@@ -42,6 +43,8 @@ def list_roles():
 			if action.lower() in [e.lower() for e in escalation_actions]:
 			found_escalation_risks.append(action)
 
+
+	if found_wildcards or found_escalation_risks.append(action)
 #print(f"Role: {role['RoleName']}")
 
 if __name__ == "__main__":
