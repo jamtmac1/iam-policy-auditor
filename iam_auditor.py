@@ -44,7 +44,13 @@ def list_roles():
 			found_escalation_risks.append(action)
 
 
-	if found_wildcards or found_escalation_risks.append(action)
+	if found_wildcards or found_escalation_risks:
+		writer.writerow([
+			role_name,
+			', '.join(found_wildcards),
+			', '.join(found_escalation_risks)
+		])
+
 #print(f"Role: {role['RoleName']}")
 
 if __name__ == "__main__":
