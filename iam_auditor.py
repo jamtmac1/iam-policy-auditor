@@ -11,11 +11,25 @@ escalation_actions = [
     "iam:PassRole",
     "iam:CreateAccessKey"
 ]
+def calculate_risk_level(wildcards, escalations):
+    score = 0
+    if wildcards:
+        score += 2
+    if escalations:
+        score += 2
+    if any(a == "*" for a in wildcards):
+        score += 3
 
+    if score >= 4:
+        return "High"
+    elif score >= 2:
+        return "Medium"
+    else:
+        return "Low"
 def list_roles():
     with open("iam_audit_results.csv", mode="w", newline="") as csvfile:
         writer = csv.writer(csvfile)
-        writer.writerow(["RoleName", "Wildcard", "EscalationRisks"])
+        writer.writerow(["RoleName", "Wildcard", "EscalationRisks", "RiskScore"])
 
         response = iam.list_roles()
 
@@ -42,10 +56,12 @@ def list_roles():
                             found_escalations.append(action)
 
             if found_wildcards or found_escalations:
+                risk_level = calculate_risk_level(found_wildcards, found_escalation_risks)
                 writer.writerow([
                     role_name,
                     ', '.join(found_wildcards),
-                    ', '.join(found_escalations)
+                    ', '.join(found_escalation_risks),
+                    risk_level
                 ])
 
 if __name__ == "__main__":
