@@ -56,11 +56,11 @@ def list_roles():
                             found_escalations.append(action)
 
             if found_wildcards or found_escalations:
-                risk_level = calculate_risk_level(found_wildcards, found_escalation_risks)
+                risk_level = calculate_risk_level(found_wildcards, found_escalations)
                 writer.writerow([
                     role_name,
                     ', '.join(found_wildcards),
-                    ', '.join(found_escalation_risks),
+                    ', '.join(found_escalations),
                     risk_level
                 ])
 
