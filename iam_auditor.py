@@ -3,7 +3,7 @@ import csv
 
 iam = boto3.client('iam')
 
-## Escalation
+## Escalations
 escalation_actions = [
     "iam:CreateUser",
     "iam:PutUserPolicy",
