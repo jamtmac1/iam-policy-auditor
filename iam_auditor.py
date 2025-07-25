@@ -54,7 +54,11 @@ def list_roles():
                             found_wildcards.append(action)
                         if action.lower() in [e.lower() for e in escalation_actions]:
                             found_escalations.append(action)
-
+            
+            # Check for AdministratorAccess managed policy
+            attached_policies = iam.list_attached_role_policies(RoleName=role_name)['AttachedPolicies']
+            has_admin = any(p['PolicyName'] == 'AdministratorAccess' for p in attached_policies)
+            
             if found_wildcards or found_escalations:
                 risk_level = calculate_risk_level(found_wildcards, found_escalations)
                 writer.writerow([
