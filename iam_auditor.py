@@ -30,7 +30,6 @@ def list_roles():
     with open("iam_audit_results.csv", mode="w", newline="") as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow(["RoleName", "Wildcard", "EscalationRisks", "RiskScore", "AdmistratorAccess"])
-
         response = iam.list_roles()
 
         for role in response['Roles']:
